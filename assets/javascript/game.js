@@ -1,6 +1,6 @@
-var wordList= ["chrome", "firefox","internet","google","web","apple","twitter","gmail","android"];
+var wordList= ["chrome","firefox","internet","google","web","apple","twitter","gmail","android"];
 var letters=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-var  flag=true;
+var flag=true;
 var userguess;
 
 
@@ -32,24 +32,17 @@ game = {
 
 function wordGuess(userg){
     
-    console.log(userg);
-    console.log("flag  :" +flag);
-    if (flag){
+    /*if (flag){
         game.pickword();
-        console.log("word  :" + game.word);
-        console.log("remainingLetters  :" + game.remainingLetters);
         game.setansarray();
-        console.log("answerArray  :" + game.answerArray);
+        
     }
-    flag=false;
-    console.log("flag  :" +flag);
+    flag=false;*/
     
-    while ((game.remainingLetters>=0)&&(game.totalnoofGuess<20))
+    while ((game.remainingLetters>0)&&(game.totalnoofGuess<20))
     {
     
     game.totalnoofGuess++;
-    console.log("totalnoofGuess  :" + game.totalnoofGuess);
-   
     for(i=0;i<game.word.length;i++)
     {
             
@@ -58,49 +51,58 @@ function wordGuess(userg){
                
                 game.answerArray[i] = userg;
                 game.wordflag[i]="true";
-                console.log(game.answerArray);
-                userop();
                 game.remainingLetters--;
             }
             
-            userop();
+            //userop();
             }
     
     break;
 }
+userop();
     if(game.remainingLetters===0)
     {
-        alert(game.answerArray.join(" "));
         alert("Good job! The answer was " +game.word);
-        flag=true;
+        //flag=true;
         game.wins++;
         userop();
-        while(game.answerArray.length>0)
+        //var i = 1;
+      /*  while(game.answerArray.length>0)
         {
+
+            console.log("Inside While :"+ game.answerArray);
+
+            console.log("Inside While i=  :"+ i);
+            i++;
             game.answerArray.pop();
         }
+        console.log("After Popping answerArray in right answer :"+ game.answerArray);
         while(game.guessedletters.length>0)
         {
             game.guessedletters.pop();
         }
         game.pickword();
         game.setansarray();   
+        //userop();
+        console.log(game.word);
+        console.log(game.answerArray);*/
     }
     else if (game.totalnoofGuess>=20){
         alert("attemps exceeded the answer was " + game.word);
         game.losses++;
         userop();
-        while(game.answerArray.length>0)
+        /*while(game.answerArray.length>0)
         {
             game.answerArray.pop();
         }
+        console.log("After Popping answerArray in wrong answer :"+ game.answerArray);
         while(game.guessedletters.length>0)
         {
             game.guessedletters.pop();
         }
         game.pickword();
-        game.setansarray();    
-           
+        game.setansarray();    */
+        //userop();   
     }
      
 }
@@ -108,8 +110,8 @@ function wordGuess(userg){
 function userop()
 {
 var html =
-          "<p>You chose: " + userguess + "</p>" +
-          "<p>" + game.answerArray + "</p>" +
+          "<p>You Guessed: " + userguess + "</p>" +
+          "<p> Word :" + game.answerArray + "</p>" +
           "<p>totalguesses: " + game.totalnoofGuess + "</p>" +
           "<p>Total Wins: " + game.wins + "</p>"+
           "<p>Total losses: " + game.losses + "</p>"+
@@ -122,8 +124,35 @@ var html =
 
 document.onkeyup = function(event) {
     userguess=event.key;
-    if(!(game.guessedletters.includes(userguess)))
-    game.guessedletters.push(userguess);
     if(letters.includes(userguess))
+    {
+        if(!(game.guessedletters.includes(userguess)))
+        game.guessedletters.push(userguess);
     wordGuess(userguess);
+    }
+}
+
+function playagain()
+{
+    while(game.answerArray.length>0)
+    {
+        game.answerArray.pop();
+    }
+    while(game.guessedletters.length>0)
+    {
+        game.guessedletters.pop();
+    }
+    game.pickword();
+    game.setansarray();   
+    userop();
+}
+function startplay()
+{
+    var html =
+          "<p>Enter a letter !" +"</p>" +
+          "<p>Hint: words are web related." + "</p>";
+          document.querySelector("#user-text").innerHTML = html;
+          game.pickword();
+          game.setansarray();   
+          userop();
 }

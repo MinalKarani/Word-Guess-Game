@@ -26,3 +26,10 @@ img{
     align:center;
     padding-left: 300px;
 }
+.btn{
+    text-align: center;
+    background-color: blue;
+    color: yellow;
+    height:50px;
+    width:100px;
+}
