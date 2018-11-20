@@ -1,44 +1,38 @@
 body{
     background-color: black;
+    text-align: center;
 }
-.game{
+#wordgame{
     background-color: black;
     color:white;
-    text-align: center;
     font-size: 18px;
     padding-top:20px;
 }
 #user-text{
     color: yellowgreen;
-    text-align: center;
     font-size: 19px;
 }
 
 .logo{
-    clear: both;
+    margin-top: 100px;
 }
-.first{
-    padding-top: 100px;
-}
+
 img{
     width:60%;
     height:150px;
-    align:center;
-    padding-left: 300px;
 }
-.btn{
-    text-align: center;
+#btn{
     background-color: blue;
     color: yellow;
     height:50px;
-    width:100px;
+    width:150px;
+    font-size: 18px;
 }
 #btnstart{
-    text-align: center;
     background-color: blue;
-    color: yellow;
+    color:yellow;
     height:50px;
-    width:100px;
+    width:150px;
     padding-top: 0px;
 }
 button{
@@ -50,7 +44,6 @@ button{
     font-size: 40px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-style:italic;
-    text-align: center;
     padding: 0px;
     }
 

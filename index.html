@@ -3,35 +3,40 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Question Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <title>Word Guess</title>
   <script type="text/javascript" src="assets/javascript/game.js"></script>
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
-        <div class="row first">
+        <div class="row">
               <div class="col-md-12 logo"><img src="assets/images/Hangman-Logo.png"></div>
               </div>
               <div class="row">
-              <div class="col-md-6">
-                <span id="wintext"></span>
+              <div class="col-md-12" id="wintext">
+                <!--<span id="wintext"></span>-->
               </div>
-              <div class="col-md-6 game">
+            </div>
+            <div class="row">
+              <div class="col-md-12" id="wordgame">
                     <button id="btnstart" onclick="startplay()">Start Playing</button>
-                    <p><span id="user-text"></span></p>
+                    <p><span id="user-text"></span></p>   
                     <span id="user-guess"></span>
               </div>
             </div>
 
-              <div class="row ">
-                    <div class="col-md-6" style="text-align:center">
-                         <button class="btn" onclick="playagain()" >Play Again?</button>
+              <div class="row">
+                    <div class="col-md-12" style="text-align:center">
+                         <button id="btn" onclick="playagain()" style="visibility: hidden">Play Again?</button>
                     </div>
                     </div>
-       
-       
-    
-    
-           
 </body>
 </html>
