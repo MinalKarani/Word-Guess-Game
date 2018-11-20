@@ -6,7 +6,7 @@ body{
     color:white;
     text-align: center;
     font-size: 18px;
-    padding-top:50px;
+    padding-top:20px;
 }
 #user-text{
     color: yellowgreen;
@@ -33,3 +33,26 @@ img{
     height:50px;
     width:100px;
 }
+#btnstart{
+    text-align: center;
+    background-color: blue;
+    color: yellow;
+    height:50px;
+    width:100px;
+    padding-top: 0px;
+}
+button{
+    border: none;
+}
+
+#wintext{
+    color:yellow;
+    font-size: 40px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style:italic;
+    text-align: center;
+    padding: 0px;
+    }
+
+
+

@@ -1,6 +1,5 @@
-var wordList= ["chrome","firefox","internet","google","web","apple","twitter","gmail","android"];
+var wordList= ["chrome", "firefox", "javascript", "jquery", "twitter", "github", "wordpress", "opera", "sass", "layout", "standards", "semantic", "designer", "developer", "module", "component", "website", "creative", "banner", "browser", "screen", "mobile", "footer", "header", "typography", "responsive", "programmer", "css", "border", "compass", "grunt", "pixel", "document", "object", "ruby", "bootstrap", "python", "php", "pattern", "ajax", "node", "element", "android", "application", "adobe", "apple", "google", "microsoft", "bookmark", "internet", "icon", "svg", "background", "property", "syntax", "flash", "html", "font", "blog", "network", "server", "content", "database", "socket", "function", "variable", "link", "apache", "query", "proxy", "backbone", "angular", "email", "underscore", "cloud"];
 var letters=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-var flag=true;
 var userguess;
 
 
@@ -32,17 +31,10 @@ game = {
 
 function wordGuess(userg){
     
-    /*if (flag){
-        game.pickword();
-        game.setansarray();
-        
-    }
-    flag=false;*/
-    
     while ((game.remainingLetters>0)&&(game.totalnoofGuess<20))
     {
     
-    game.totalnoofGuess++;
+    
     for(i=0;i<game.word.length;i++)
     {
             
@@ -53,56 +45,30 @@ function wordGuess(userg){
                 game.wordflag[i]="true";
                 game.remainingLetters--;
             }
-            
-            //userop();
-            }
+    }
     
     break;
-}
-userop();
+    }
+    userop();
     if(game.remainingLetters===0)
     {
-        alert("Good job! The answer was " +game.word);
-        //flag=true;
-        game.wins++;
         userop();
-        //var i = 1;
-      /*  while(game.answerArray.length>0)
-        {
-
-            console.log("Inside While :"+ game.answerArray);
-
-            console.log("Inside While i=  :"+ i);
-            i++;
-            game.answerArray.pop();
+        var html =
+          "<p>Good job! The answer was :  " + game.word + "</p>";
+          document.querySelector("#wintext").innerHTML = html;
+        game.wins++;
+    
+        //Play audio after correct guess
+        var audio = new Audio('assets/Audio/winaudio.wav');
+        audio.play();
+    
         }
-        console.log("After Popping answerArray in right answer :"+ game.answerArray);
-        while(game.guessedletters.length>0)
-        {
-            game.guessedletters.pop();
-        }
-        game.pickword();
-        game.setansarray();   
-        //userop();
-        console.log(game.word);
-        console.log(game.answerArray);*/
-    }
     else if (game.totalnoofGuess>=20){
-        alert("attemps exceeded the answer was " + game.word);
+        var html =
+          "<p>Attemps exceeded the answer was :  " + game.word + "</p>";
+          document.querySelector("#wintext").innerHTML = html;
         game.losses++;
         userop();
-        /*while(game.answerArray.length>0)
-        {
-            game.answerArray.pop();
-        }
-        console.log("After Popping answerArray in wrong answer :"+ game.answerArray);
-        while(game.guessedletters.length>0)
-        {
-            game.guessedletters.pop();
-        }
-        game.pickword();
-        game.setansarray();    */
-        //userop();   
     }
      
 }
@@ -127,7 +93,10 @@ document.onkeyup = function(event) {
     if(letters.includes(userguess))
     {
         if(!(game.guessedletters.includes(userguess)))
-        game.guessedletters.push(userguess);
+        {
+            game.guessedletters.push(userguess);
+            game.totalnoofGuess++;
+        }
     wordGuess(userguess);
     }
 }
