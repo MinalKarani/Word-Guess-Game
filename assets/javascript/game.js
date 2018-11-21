@@ -11,7 +11,7 @@ game = {
     answerArray:[],
     guessedletters:[],
     remainingLetters:0,
-    totalnoofGuess:0,
+    totalnoofGuess:15,
     wins:0,
     losses:0,
     userguess:0,
@@ -27,13 +27,14 @@ game = {
         this.answerArray[j] = "_";
         this.wordflag[j]="false";
         }
-        this.totalnoofGuess=0;
+        this.totalnoofGuess=15;
     },
 };
 
+
 function wordGuess(userg){
 
-    while ((game.remainingLetters>0)&&(game.totalnoofGuess<15))
+    while ((game.remainingLetters>0)&&(game.totalnoofGuess>0))
     {
     
     
@@ -77,7 +78,7 @@ function wordGuess(userg){
         }
 
     // User unable to guess the word
-    else if (game.totalnoofGuess>=15){
+    else if (game.totalnoofGuess===0){
         document.getElementById("wintext").style="display:block";
         var html =
           "<p>Attemps exceeded the answer was :  " + game.word + "</p>";
@@ -103,8 +104,8 @@ function userop()
 {
 var html =
           "<p>You Guessed: " + game.userguess + "</p>" +
-          "<p> Word :" + game.answerArray + "</p>" +
-          "<p>totalguesses: " + game.totalnoofGuess + "</p>" +
+          "<p>Word :" + game.answerArray + "</p>" +
+          "<p>Guesses Remaining: " + game.totalnoofGuess + "</p>" +
           "<p>Total Wins: " + game.wins + "</p>"+
           "<p>Total losses: " + game.losses + "</p>"+
           "<p>Guessed Letters: " + game.guessedletters + "</p>" ;
@@ -121,7 +122,7 @@ document.onkeyup = function(event) {
         if(!(game.guessedletters.includes(game.userguess)))
         {
             game.guessedletters.push(game.userguess);
-            game.totalnoofGuess++;
+            game.totalnoofGuess--;
         }
     wordGuess(game.userguess);
     }
