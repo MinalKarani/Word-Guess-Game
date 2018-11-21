@@ -1,5 +1,5 @@
 # Word-Guess-Game
-Link to Live Game: https://github.com/MinalKarani/Word-Guess-Game
+Link to Live Game:  https://minalkarani.github.io/Word-Guess-Game/
 
 Game Objective:
     --- Guess the correct word and earn a win point! 
